@@ -92,7 +92,7 @@
 
 //Mime special, RIP HIS TOUNGE OUT AND CRUSH IT BEFORE HIS EYES! 25 brute to the head and a 6s stun also destroying the targets tounge and making them BLEED!
 /datum/martial_art/cqm/proc/mimeSpecial(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	var/obj/item/organ/tounge/T = D.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/tongue/T = D.getorganslot(ORGAN_SLOT_TONGUE)
 	log_combat(A, D, "Mime specialed (Close Quarters Mimery)")
 	D.visible_message("<span class='warning'>[A] grabs [D]'s tounge and violently rips it out and crushes it!</span>", \
 		"<span class='userdanger'>[A] grabs and rips your tounge out and crushes it!</span>")
