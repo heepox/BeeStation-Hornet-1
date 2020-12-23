@@ -54,7 +54,7 @@
 	D.visible_message("<span class='warning'>[A] pulls [D]'s tounge painfully!</span>", \
 		"<span class='userdanger'>[A] pulls your tounge painfully restricting your speech!</span>")
 	D.apply_damage(10, A.dna.species.attack_type, BODY_ZONE_HEAD, def_check)
-	D.applyOrganDamage(ORGAN_SLOT_TOUNGE, 15, 150)
+	D.adjustOrganLoss(ORGAN_SLOT_TOUNGE, 15, 200)
 	D.Jitter(20)
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 	playsound(get_turf(D), 'sound/effects/hit_punch.ogg', 30, 1, -1)
@@ -92,7 +92,7 @@
 
 //Mime special, RIP HIS TOUNGE OUT AND CRUSH IT BEFORE HIS EYES! 25 brute to the head and a 6s stun also destroying the targets tounge and making them BLEED!
 /datum/martial_art/cqm/proc/mimeSpecial(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	var/obj/item/organ/tounge/T = D.getorganslot(ORGAN_SLOT_TOUNGE)
+	var/obj/item/organ/tounge/T = getorganslot(ORGAN_SLOT_TOUNGE)
 	log_combat(A, D, "Mime specialed (Close Quarters Mimery)")
 	D.visible_message("<span class='warning'>[A] grabs [D]'s tounge and violently rips it out and crushes it!</span>", \
 		"<span class='userdanger'>[A] grabs and rips your tounge out and crushes it!</span>")
