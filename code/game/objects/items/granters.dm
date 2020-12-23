@@ -380,8 +380,8 @@
 
 /obj/item/book/granter/martial/cqm/already_known(mob/user)
 	if(user.mind && !user.mind.miming)
-			to_chat(user, "<span class='warning'>You try to read the scroll but can't comprehend any of it.</span>")
-			return TRUE
+		to_chat(user, "<span class='warning'>You try to read the scroll but can't comprehend any of it.</span>")
+		return TRUE
 	else
 		return FALSE
 
