@@ -44,11 +44,8 @@
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		playsound(get_turf(D), 'sound/weapons/thudswoosh.ogg', 30, 1, -1)
 		return TRUE
-	else
-		log_combat(A, D, "failed a surprise spin (Close Quarters Mimery)")
-			D.visible_message("<span class='warning'>[A] tries to spin [D] right round, but fails!</span>", \
-								"<span class='userdanger'>[A] tries to spin you right round, but fails!</span>")
-		return TRUE
+
+	return basic_hit(A,D)
 
 //Tounge Pull, Deal 10 brute to the head(reduced by armor(space magic), Deals damage to the targets tounge and restricts speech for a bit.
 /datum/martial_art/cqm/proc/toungePull(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -90,11 +87,8 @@
 		D.emote("scream")
 		D.Stun(30)
 		return TRUE
-	else
-		log_combat(A, D, "failed an arm pull (Close Quarters Mimery)")
-			D.visible_message("<span class='warning'>[A] tries to pull [D]'s arm, but misses!</span>", \
-								"<span class='userdanger'>[A] tries to pull your arm, but misses!</span>")
-		return TRUE
+
+	return basic_hit(A,D)
 
 //Mime special, RIP HIS TOUNGE OUT AND CRUSH IT BEFORE HIS EYES! 25 brute to the head and a 6s stun also destroying the targets tounge and making them BLEED!
 /datum/martial_art/cqm/proc/mimeSpecial(mob/living/carbon/human/A, mob/living/carbon/human/D)
