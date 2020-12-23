@@ -57,13 +57,13 @@
 	D.adjustOrganLoss(ORGAN_SLOT_TOUNGE, 15, 150)
 	D.Jitter(20)
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
-	playsound(get_turf(D), 'sound/weapons/blobattack.ogg', 30, 1, -1)
+	playsound(get_turf(D), 'sound/effects/hit_punch.ogg', 30, 1, -1)
 	if(D.silent <= 10)
 		D.silent = CLAMP(D.silent + 10, 0, 10)
 	return TRUE
 
 //Throat Punch, Prevents breating for a moment, deals oxygen damage and restricts speech for a some time.
-/datum/martial_art/cqm/proc/toungePull(mob/living/carbon/human/A, mob/living/carbon/human/D)
+/datum/martial_art/cqm/proc/throatPunch(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	log_combat(A, D, "Throat punched (Close Quarters Mimery)")
 	D.visible_message("<span class='warning'>[A] Punches [D]'s throat!</span>", \
 		"<span class='userdanger'>[A] punches your throat restricting your speech and breathing!</span>")
@@ -92,6 +92,7 @@
 
 //Mime special, RIP HIS TOUNGE OUT AND CRUSH IT BEFORE HIS EYES! 25 brute to the head and a 6s stun also destroying the targets tounge and making them BLEED!
 /datum/martial_art/cqm/proc/mimeSpecial(mob/living/carbon/human/A, mob/living/carbon/human/D)
+	var/obj/item/organ/tounge/T = D.getorganslot(ORGAN_SLOT_TOUNGE)
 	log_combat(A, D, "Mime specialed (Close Quarters Mimery)")
 	D.visible_message("<span class='warning'>[A] grabs [D]'s tounge and violently rips it out and crushes it!</span>", \
 		"<span class='userdanger'>[A] grabs and rips your tounge out and crushes it!</span>")
@@ -100,8 +101,7 @@
 	D.Stun(60)
 	D.bleed_rate = CLAMP(D.bleed_rate + 30, 0, 30)
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
-	playsound(get_turf(A), 'sound/weapons/blobattack.ogg', 50, 1, -1)
-	var/obj/item/organ/tounge/T = D.getorganslot(ORGAN_SLOT_TOUNGE)
+	playsound(get_turf(A), 'sound/effects/hit_punch.ogg', 50, 1, -1)
 	if(T)
 		T.Remove(D)
 		qdel(T)
