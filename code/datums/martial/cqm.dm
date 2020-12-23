@@ -54,7 +54,7 @@
 	D.visible_message("<span class='warning'>[A] pulls [D]'s tounge painfully!</span>", \
 		"<span class='userdanger'>[A] pulls your tounge painfully restricting your speech!</span>")
 	D.apply_damage(10, A.dna.species.attack_type, BODY_ZONE_HEAD, def_check)
-	D.adjustOrganLoss(ORGAN_SLOT_TOUNGE, 15, 200)
+	D.adjustOrganLoss(ORGAN_SLOT_TONGUE, 15, 200)
 	D.Jitter(20)
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 	playsound(get_turf(D), 'sound/effects/hit_punch.ogg', 30, 1, -1)
