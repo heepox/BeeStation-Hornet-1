@@ -74,18 +74,19 @@
 
 //Arm Pull, a weaker wrist wrench that wont grant distance from batons. Disarms and very briefly stuns the target for three seconds as well as dealing 5 brute to either arm.
 /datum/martial_art/cqm/proc/armPull(mob/living/carbon/human/A, mob/living/carbon/human/D)
-if(!D.stat && !D.IsStun() && !D.IsParalyzed())
-	log_combat(A, D, "Arm pulled (Close Quarters Mimery)")
-	D.visible_message("<span class='warning'>[A] grabs [D]'s arm and pulls it sideways painfully!</span>", \
-		"<span class='userdanger'>[A] grabs and pulls your arm painfully to the side!</span>")
-	D.apply_damage(5, BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-	D.dropItemToGround(D.get_active_held_item())
-	D.emote("scream")
-	D.Stun(30)
-	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
-	playsound(get_turf(A), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-	return TRUE
+	if(!D.stat && !D.IsStun() && !D.IsParalyzed())
+		log_combat(A, D, "Arm pulled (Close Quarters Mimery)")
+		D.visible_message("<span class='warning'>[A] grabs [D]'s arm and pulls it sideways painfully!</span>", \
+			"<span class='userdanger'>[A] grabs and pulls your arm painfully to the side!</span>")
+		playsound(get_turf(A), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
+		D.apply_damage(5, BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
+		D.dropItemToGround(D.get_active_held_item())
+		D.emote("scream")
+		D.Stun(30)
+		return TRUE
 
+	return basic_hit(A,D)
 
 //Mime special, RIP HIS TOUNGE OUT AND CRUSH IT BEFORE HIS EYES! 25 brute to the head and a 6s stun also destroying the targets tounge and making them BLEED!
 /datum/martial_art/cqm/proc/mimeSpecial(mob/living/carbon/human/A, mob/living/carbon/human/D)
