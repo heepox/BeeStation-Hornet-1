@@ -10,7 +10,7 @@
 	allow_temp_override = FALSE
 	help_verb = /mob/living/carbon/human/proc/cqm_help
 
-	/datum/martial_art/cqm/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
+/datum/martial_art/cqm/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,SURPRISE_SPIN_COMBO))
 		streak = ""
 		surpriseSpin(A,D)
