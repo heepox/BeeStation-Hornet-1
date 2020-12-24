@@ -361,6 +361,7 @@
 
 /obj/item/book/granter/martial/cqm
 	martial = /datum/martial_art/cqm
+  
 	name = "old scroll"
 	martialname = "close quarters mimery"
 	desc = "A scroll that appears blank, but on closer inspection is written in invisible ink."
@@ -371,6 +372,7 @@
 	remarks = list("...", "???", "!!!", "?!?", "!?!")
 
 /obj/item/book/granter/martial/cqm/onlearned(mob/living/carbon/user)
+
 	..()
 	if(!oneuse)
 		return
@@ -378,10 +380,12 @@
 	name = "empty scroll"
 	icon_state = "blankscroll"
 
+
 /obj/item/book/granter/martial/cqm/already_known(mob/user)
 	if(user.mind && !user.mind.miming)
 		to_chat(user, "<span class='warning'>You try to read the scroll but can't comprehend any of it.</span>")
 		return TRUE
+
 	else
 		return FALSE
 
