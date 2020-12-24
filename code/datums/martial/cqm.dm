@@ -1,4 +1,4 @@
-#define SURPRISE_SPIN_COMBO "DD"
+#define SURPRISE_SPIN_COMBO "DG"
 #define TOUNGE_PULL_COMBO "GHG"
 #define THROAT_PUNCH_COMBO "HHG"
 #define ARM_PULL_COMBO "GD"
@@ -35,7 +35,7 @@
 
 //Surprise Spin, confused effect for a some time
 /datum/martial_art/cqm/proc/surpriseSpin(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	if(!D.stat && !D.IsStun() && !D.IsParalyzed())
+	if((D.mobility_flags & MOBILITY_STAND))
 		log_combat(A, D, "Surprise spun (Close Quarters Mimery)")
 		D.visible_message("<span class='warning'>[A] spins [D] right round like a record!</span>", \
 		"<span class='userdanger'>[A] spins you right round like a record!</span>")
@@ -45,7 +45,12 @@
 		A.do_attack_animation(D, ATTACK_EFFECT_DISARM)
 		playsound(get_turf(D), 'sound/weapons/thudswoosh.ogg', 30, 1, -1)
 		return TRUE
+	else
+		log_combat(A, D, "Failed a Surprise Spin (Close Quarters Mimery)")
+		D.visible_message("<span class='warning'>[A] attempts spin [D] around like a record, but fails!</span>", \
+			"<span class='userdanger'>[A] attempts to spin you around like a record, but fails!</span>")
 	return basic_hit(A,D)
+
 
 //Tounge Pull, Deal 10 brute to the head(reduced by armor(space magic), Deals damage to the targets tounge and restricts speech for a bit.
 /datum/martial_art/cqm/proc/toungePull(mob/living/carbon/human/A, mob/living/carbon/human/D)
