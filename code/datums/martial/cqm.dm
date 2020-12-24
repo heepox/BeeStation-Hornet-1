@@ -1,8 +1,8 @@
-#define SURPRISE_SPIN_COMBO "DG"
+#define SURPRISE_SPIN_COMBO "DH"
 #define TOUNGE_PULL_COMBO "GHG"
 #define THROAT_PUNCH_COMBO "HHG"
 #define ARM_PULL_COMBO "GD"
-#define MIME_SPECIAL_COMBO "DHGGHD"
+#define MIME_SPECIAL_COMBO "DGHGHD"
 
 /datum/martial_art/cqm
 	name = "Close Quarters Mimery"
@@ -35,7 +35,7 @@
 
 //Surprise Spin, confused effect for a some time
 /datum/martial_art/cqm/proc/surpriseSpin(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	if((D.mobility_flags & MOBILITY_STAND))
+	if(D.mobility_flags & MOBILITY_STAND)
 		log_combat(A, D, "Surprise spun (Close Quarters Mimery)")
 		D.visible_message("<span class='warning'>[A] spins [D] right round like a record!</span>", \
 		"<span class='userdanger'>[A] spins you right round like a record!</span>")
@@ -45,12 +45,7 @@
 		A.do_attack_animation(D, ATTACK_EFFECT_DISARM)
 		playsound(get_turf(D), 'sound/weapons/thudswoosh.ogg', 30, 1, -1)
 		return TRUE
-	else
-		log_combat(A, D, "Failed a Surprise Spin (Close Quarters Mimery)")
-		D.visible_message("<span class='warning'>[A] attempts spin [D] around like a record, but fails!</span>", \
-			"<span class='userdanger'>[A] attempts to spin you around like a record, but fails!</span>")
 	return basic_hit(A,D)
-
 
 //Tounge Pull, Deal 10 brute to the head(reduced by armor(space magic), Deals damage to the targets tounge and restricts speech for a bit.
 /datum/martial_art/cqm/proc/toungePull(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -149,8 +144,8 @@
 
 	to_chat(usr, "<b><i>You try to remember the fundamentals of Close Quarters Mimery...</i></b>")
 
-	to_chat(usr, "<span class='notice'>Surprise spin</span>: Disarm Disarm. Greatly confuses your target and makes them spin if they are standing")
+	to_chat(usr, "<span class='notice'>Surprise spin</span>: Disarm Harm. Greatly confuses your target and makes them spin if they are standing")
 	to_chat(usr, "<span class='notice'>Tounge Pull</span>: Grab Harm Grab. Deals some damage to your targets tounge and prevents them from speaking for a short time .")
 	to_chat(usr, "<span class='notice'>Throat Punch</span>: Harm Harm Grab. Prevents your target from speaking for some time and stops them from breating for a moment aswell as dealing slight oxygen damage")
 	to_chat(usr, "<span class='notice'>Arm Pull</span>: Grab Disarm. Deals very minor brute damage to one of your targets arms and disarms them while also stunning them for three seconds.")
-	to_chat(usr, "<span class='notice'>Mime special</span>: Disarm Harm Grab Grab Harm Disarm. Rips your targets tounge out causing causing heavy bleeding and brute damage aswell as destroying their tounge and stunning them.")
+	to_chat(usr, "<span class='notice'>Mime special</span>: Disarm Grab Harm Grab Harm Disarm. Rips your targets tounge out causing causing heavy bleeding and brute damage aswell as destroying their tounge and stunning them.")
