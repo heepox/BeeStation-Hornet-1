@@ -42,10 +42,11 @@
 		D.emote("spin")
 		if(D.confused <= 20)
 			D.confused = CLAMP(D.confused + 10, 0, 20)
-		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
+		A.do_attack_animation(D, ATTACK_EFFECT_DISARM)
 		playsound(get_turf(D), 'sound/weapons/thudswoosh.ogg', 30, 1, -1)
 		return TRUE
-	return FALSE
+	else
+		return disarm_act(A, D)
 
 //Tounge Pull, Deal 10 brute to the head(reduced by armor(space magic), Deals damage to the targets tounge and restricts speech for a bit.
 /datum/martial_art/cqm/proc/toungePull(mob/living/carbon/human/A, mob/living/carbon/human/D)
