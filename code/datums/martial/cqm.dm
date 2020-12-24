@@ -35,7 +35,7 @@
 
 //Surprise Spin, confused effect for a some time
 /datum/martial_art/cqm/proc/surpriseSpin(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	if(!D.stat && !D.IsStun() && !D.IsParalyzed())
+	if(!D.stat && !D.IsStun() && !D.IsParalyzed() && (D.mobility_flags & MOBILITY_STAND))
 		log_combat(A, D, "Surprise spun (Close Quarters Mimery)")
 		D.visible_message("<span class='warning'>[A] spins [D] right round like a record!</span>", \
 		"<span class='userdanger'>[A] spins you right round like a record!</span>")
@@ -45,7 +45,6 @@
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		playsound(get_turf(D), 'sound/weapons/thudswoosh.ogg', 30, 1, -1)
 		return TRUE
-
 	return basic_hit(A,D)
 
 //Tounge Pull, Deal 10 brute to the head(reduced by armor(space magic), Deals damage to the targets tounge and restricts speech for a bit.
@@ -113,13 +112,12 @@
 		playsound(get_turf(A), 'sound/effects/hit_punch.ogg', 50, 1, -1)
 		T.Remove(D)
 		qdel(T)
-	return TRUE
+		return TRUE
 	else
 		log_combat(A, D, "Failed a Mime Special (Close Quarters Mimery)")
 		D.visible_message("<span class='warning'>[A] attempts to rip [D]'s tounge out, but [D] does not have one!</span>", \
 			"<span class='userdanger'>[A] attempts to rip your tounge out but fails as you do not have one!</span>")
 	return basic_hit(A,D)
-
 
 /datum/martial_art/cqm/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("H",D)
