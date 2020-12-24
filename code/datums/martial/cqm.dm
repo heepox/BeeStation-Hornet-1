@@ -35,18 +35,17 @@
 
 //Surprise Spin, confused effect for a some time
 /datum/martial_art/cqm/proc/surpriseSpin(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	if(!D.stat && !D.IsStun() && !D.IsParalyzed() && (D.mobility_flags & MOBILITY_STAND))
+	if(!D.stat && !D.IsStun() && !D.IsParalyzed())
 		log_combat(A, D, "Surprise spun (Close Quarters Mimery)")
 		D.visible_message("<span class='warning'>[A] spins [D] right round like a record!</span>", \
 		"<span class='userdanger'>[A] spins you right round like a record!</span>")
 		D.emote("spin")
 		if(D.confused <= 20)
 			D.confused = CLAMP(D.confused + 10, 0, 20)
-		A.do_attack_animation(D, ATTACK_EFFECT_DISARM)
+		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		playsound(get_turf(D), 'sound/weapons/thudswoosh.ogg', 30, 1, -1)
 		return TRUE
-	else
-		return disarm_act(A, D)
+	return basic_hit(A,D)
 
 //Tounge Pull, Deal 10 brute to the head(reduced by armor(space magic), Deals damage to the targets tounge and restricts speech for a bit.
 /datum/martial_art/cqm/proc/toungePull(mob/living/carbon/human/A, mob/living/carbon/human/D)
