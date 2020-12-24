@@ -45,7 +45,7 @@
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		playsound(get_turf(D), 'sound/weapons/thudswoosh.ogg', 30, 1, -1)
 		return TRUE
-	return basic_hit(A,D)
+	return disarm_act(A,D)
 
 //Tounge Pull, Deal 10 brute to the head(reduced by armor(space magic), Deals damage to the targets tounge and restricts speech for a bit.
 /datum/martial_art/cqm/proc/toungePull(mob/living/carbon/human/A, mob/living/carbon/human/D)
